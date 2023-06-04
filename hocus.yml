@@ -1,0 +1,16 @@
+image:
+  buildContext: .
+  file: hocus.Dockerfile
+tasks:
+  - name: Build project
+    prebuild: |
+      git submodule update --init --recursive && \
+      cd sysbox-ipc && make && \
+      cd ../sysbox-fs && make
+    workspace: sleep 0.01
+vscode:
+  # You can specify extensions you want in your workspace here
+  extensions:
+    - redhat.vscode-yaml
+    - golang.go
+
